@@ -1,37 +1,64 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: "关于"
 ---
 
-AstroPaper is a minimal, accessible and SEO-friendly blog theme built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/).
+## 👋 欢迎来到我的学习博客
 
-![Astro Paper](public/astropaper-og.jpg)
+这个博客是我用来记录学习过程中遇到的知识、问题和解决方案的个人空间。主要聚焦于以下几个技术领域：
 
-AstroPaper provides a solid foundation for blogs, or even portfolios\_ with full markdown support, built-in dark mode, and a clean layout that works out-of-the-box.
+## 🎯 学习方向
 
-The blog posts in this theme also serve as guides, docs or example articles\_ making AstroPaper a flexible starting point for your next content-driven site.
+### 🤖 LLM (大语言模型)
+记录和分享在大语言模型学习过程中的心得体会，包括：
+- Prompt Engineering 技巧与实践
+- 模型微调与优化经验
+- AI 应用开发的实战案例
+- 对 LLM 技术的理解和思考
 
-## Features
+### ⛓️ LangChain 框架
+探索 LangChain 在构建 AI 应用中的强大能力：
+- 核心概念和架构理解
+- Chain 组件的使用指南
+- Agent 开发实战经验
+- 工具集成和自定义扩展
 
-AstroPaper comes with a set of useful features that make content publishing easy and effective:
+### ⚛️ React 前端开发
+记录 React 学习之路上的点点滴滴：
+- 组件设计与最佳实践
+- Hooks 深入理解与应用
+- 状态管理方案对比
+- 性能优化技巧总结
 
-- SEO-friendly
-- Fast performance
-- Light & dark mode
-- Highly customizable
-- Organizable blog posts
-- Responsive & accessible
-- Static search with [PageFind](https://pagefind.app/)
-- Automatic social image generation
+## 💡 博客理念
 
-and so much more.
+我相信**"学习最好的方式就是教给别人"**。通过写博客，我能够：
 
-## Show your support
+1. **巩固知识** - 将学到的内容用自己的话表达出来
+2. **建立体系** - 将零散的知识点串联成完整的知识框架
+3. **分享价值** - 希望我的笔记能帮助到同样在学习的你
+4. **记录成长** - 见证自己从入门到精通的整个过程
 
-If you like [AstroPaper](https://github.com/satnaing/astro-paper), consider giving it a star ⭐️.
+## 📝 内容风格
 
-Found a bug 🐛 or have an improvement ✨ in mind? Feel free to open an [issue](https://github.com/satnaing/astro-paper/issues), submit a [pull request](https://github.com/satnaing/astro-paper/pulls) or start a [discussion](https://github.com/satnaing/astro-paper/discussions).
+- **实战导向** - 注重实际代码和可运行的示例
+- **通俗易懂** - 用简单直白的语言解释复杂概念
+- **持续更新** - 随着学习深入不断完善内容
+- **开源精神** - 所有代码示例均可在 GitHub 找到
 
-If you find this theme helpful, you can also [sponsor me on GitHub](https://github.com/sponsors/satnaing) or [buy me a coffee](https://buymeacoffee.com/satnaing) to show your support — every penny counts.
+## 🌟 持续学习中
 
-Kyay zuu! 🙏🏼
+技术世界日新月异，我始终保持好奇心和学习热情。这个博客会不断更新，记录我在技术道路上的每一步成长。
+
+> **学习的本质不在于记住所有知识，而在于掌握学习的能力。**
+
+---
+
+## 📮 联系我
+
+如果您对我的内容感兴趣，或者有任何问题和建议，欢迎通过以下方式联系我：
+
+- **GitHub**: [https://github.com/whisper-you](https://github.com/whisper-you)
+- **Email**: [your-email@example.com](mailto:your-email@example.com)
+
+感谢您的访问！希望我的笔记能对您有所帮助 🙏

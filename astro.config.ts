@@ -1,4 +1,4 @@
-import { defineConfig, envField, fontProviders } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import remarkToc from "remark-toc";
@@ -59,15 +59,16 @@ export default defineConfig({
   },
   experimental: {
     preserveScriptOrder: true,
-    fonts: [
-      {
-        name: "Google Sans Code",
-        cssVariable: "--font-google-sans-code",
-        provider: fontProviders.google(),
-        fallbacks: ["monospace"],
-        weights: [300, 400, 500, 600, 700],
-        styles: ["normal", "italic"],
-      },
-    ],
+    // 禁用 Google Fonts 实验性功能，避免网络请求失败
+    // fonts: [
+    //   {
+    //     name: "Google Sans Code",
+    //     cssVariable: "--font-google-sans-code",
+    //     provider: fontProviders.google(),
+    //     fallbacks: ["monospace"],
+    //     weights: [300, 400, 500, 600, 700],
+    //     styles: ["normal", "italic"],
+    //   },
+    // ],
   },
 });

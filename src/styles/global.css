@@ -1,3 +1,23 @@
+/* Import artistic Chinese font for site title */
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+
+/* Define local font face for Google Sans Code */
+@font-face {
+  font-family: 'Google Sans Code';
+  src: url('../assets/fronts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Google Sans Code';
+  src: url('../assets/fronts/GoogleSansCode-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @import "tailwindcss";
 @import "./typography.css";
 
@@ -18,6 +38,14 @@ html[data-theme="dark"] {
   --accent: #ff6b01;
   --muted: #343f60;
   --border: #ab4b08;
+}
+
+/* Define font family for body text */
+:root {
+  /* 正文字体：英文使用 Google Sans Code，中文回退到宋体 */
+  --font-google-sans-code: 'Google Sans Code', 'STSong', 'SimSun', 'Noto Serif SC', serif;
+  /* 网站标题：使用站酷快乐体艺术字体，中文回退到宋体 */
+  --font-site-title: 'ZCOOL KuaiLe', 'STSong', 'SimSun', 'Microsoft YaHei', sans-serif;
 }
 
 @theme inline {
