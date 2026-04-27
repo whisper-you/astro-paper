@@ -2,7 +2,7 @@
 
 title: "小知识点"
 author: 雨天的烟花
-pubDatetime: 2026-04-27T18:00:00Z
+pubDatetime: 2026-04-27T18:00:00
 slug: lingsui-01
 featured: false
 draft: false

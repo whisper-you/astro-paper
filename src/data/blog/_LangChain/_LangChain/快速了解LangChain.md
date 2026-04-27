@@ -3,7 +3,7 @@
 title: "快速了解LangChain"
 author: 雨天的烟花
 pubDatetime: 2025-04-27
-slug: 这里填英文-slug
+slug: langchain-quick
 featured: false
 draft: false
 tags:
