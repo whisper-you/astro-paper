@@ -2,7 +2,7 @@
 
 title: "快速了解LangChain"
 author: 雨天的烟花
-pubDatetime: 2026-04-27T18:00:00Z
+pubDatetime: 2025-04-27
 slug: 这里填英文-slug
 featured: false
 draft: false
