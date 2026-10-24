@@ -1,60 +1,16 @@
 /* Import artistic Chinese font for site title */
 @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
 
-/* Define local font face for Google Sans Code */
-@font-face {
-  font-family: 'Google Sans Code';
-  src: url('../assets/fronts/GoogleSansCode-VariableFont_wght.ttf') format('truetype');
-  font-weight: 300 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Google Sans Code';
-  src: url('../assets/fronts/GoogleSansCode-Italic-VariableFont_wght.ttf') format('truetype');
-  font-weight: 300 700;
-  font-style: italic;
-  font-display: swap;
-}
-
 @import "tailwindcss";
+@import "./theme.css";
 @import "./typography.css";
+@import "rehype-callouts/theme/obsidian";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-:root,
-html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
-}
-
-html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #ff6b01;
-  --muted: #343f60;
-  --border: #ab4b08;
-}
-
-/* Define font family for body text */
+/* 网站标题：使用站酷快乐体艺术字体，中文回退到宋体 */
 :root {
-  /* 正文字体：英文使用 Google Sans Code，中文回退到宋体 */
-  --font-google-sans-code: 'Google Sans Code', 'STSong', 'SimSun', 'Noto Serif SC', serif;
-  /* 网站标题：使用站酷快乐体艺术字体，中文回退到宋体 */
   --font-site-title: 'ZCOOL KuaiLe', 'STSong', 'SimSun', 'Microsoft YaHei', sans-serif;
-}
-
-@theme inline {
-  --font-app: var(--font-google-sans-code);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
 }
 
 @layer base {
@@ -63,15 +19,10 @@ html[data-theme="dark"] {
     scrollbar-width: auto;
     scrollbar-color: var(--color-muted) transparent;
   }
-  html {
-    @apply overflow-y-scroll scroll-smooth;
-  }
-  body {
-    @apply flex min-h-svh flex-col bg-background font-app text-foreground selection:bg-accent/75 selection:text-background;
-  }
   a,
-  button {
-    @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+  button,
+  #main-content {
+    @apply outline-accent outline-offset-1 focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
@@ -84,15 +35,13 @@ html[data-theme="dark"] {
 }
 
 @utility app-layout {
-  @apply mx-auto w-full max-w-app px-4;
+  @apply max-w-app mx-auto w-full px-4;
 }
 
-.active-nav {
+@utility active-nav {
   @apply underline decoration-wavy decoration-2 underline-offset-8;
 }
 
-/* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */
-/* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 1rem;
 }

@@ -1,6 +1,6 @@
 ---
-layout: ../layouts/AboutLayout.astro
 title: "关于"
+description: "关于我和这个学习博客的介绍。"
 ---
 
 ## 👋 欢迎来到我的学习博客
