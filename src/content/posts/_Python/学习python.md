@@ -1,5 +1,4 @@
 ---
-
 title: "小知识点"
 author: 雨天的烟花
 pubDatetime: 2026-04-26
@@ -7,12 +6,11 @@ slug: lingsui-01
 featured: false
 draft: false
 tags:
-
-- python
+  - python
 
 description: "待定"
-
 ---
+
 ```python
 from langchain.agents import create_agent
 

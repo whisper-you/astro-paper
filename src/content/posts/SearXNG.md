@@ -46,7 +46,7 @@ docker run -d \
 
 ```yaml
 # docker-compose.yml
-version: '3.8'
+version: "3.8"
 
 services:
   searxng:
@@ -58,7 +58,7 @@ services:
       - ./config:/etc/searxng:rw
     environment:
       - SEARXNG_BASE_URL=http://localhost:8080/
-      - SEARXNG_SECRET_KEY=your_secret_key_here  # 替换为随机字符串
+      - SEARXNG_SECRET_KEY=your_secret_key_here # 替换为随机字符串
     restart: unless-stopped
     cap_drop:
       - ALL
@@ -74,6 +74,7 @@ services:
 ```
 
 启动：
+
 ```bash
 docker-compose up -d
 ```
@@ -110,8 +111,8 @@ general:
   enable_metrics: true
 
 search:
-  safe_search: 0  # 0=关闭, 1=中等, 2=严格
-  autocomplete: "google"  # 自动补全引擎
+  safe_search: 0 # 0=关闭, 1=中等, 2=严格
+  autocomplete: "google" # 自动补全引擎
   default_lang: "zh-CN"
   formats:
     - html
@@ -123,17 +124,17 @@ engines:
     engine: baidu
     shortcut: bd
     disabled: false
-    
+
   - name: 必应
     engine: bing
     shortcut: bi
     disabled: false
-    
+
   - name: 谷歌
     engine: google
     shortcut: gg
     disabled: false
-    
+
   - name: DuckDuckGo
     engine: duckduckgo
     shortcut: ddg
@@ -144,25 +145,25 @@ engines:
     engine: wikipedia
     shortcut: wp
     disabled: false
-    
+
   - name: GitHub
     engine: github
     shortcut: gh
     disabled: false
 
 server:
-  secret_key: "your_secret_key"  # 必须修改！
-  limiter: false  # 关闭限流（内网使用）
-  image_proxy: true  # 启用图片代理
+  secret_key: "your_secret_key" # 必须修改！
+  limiter: false # 关闭限流（内网使用）
+  image_proxy: true # 启用图片代理
   port: 8080
   bind_address: "0.0.0.0"
-  
+
 ui:
   default_theme: simple
   default_locale: "zh-CN"
   query_in_title: true
   infinite_scroll: true
-  
+
 outgoing:
   request_timeout: 3.0
   max_request_timeout: 10.0
@@ -205,12 +206,12 @@ import json
 class SearXNGClient:
     def __init__(self, base_url="http://localhost:8080"):
         self.base_url = base_url
-    
-    def search(self, query, engines=None, categories=None, 
+
+    def search(self, query, engines=None, categories=None,
                language="zh-CN", pageno=1, safesearch=0):
         """
         搜索接口
-        
+
         Args:
             query: 搜索关键词
             engines: 指定引擎列表，如 ['google', 'bing']
@@ -218,7 +219,7 @@ class SearXNGClient:
             language: 语言代码
             pageno: 页码
             safesearch: 安全搜索级别
-        
+
         Returns:
             dict: 搜索结果
         """
@@ -229,16 +230,16 @@ class SearXNGClient:
             'pageno': pageno,
             'safesearch': safesearch
         }
-        
+
         if engines:
             params['engines'] = ','.join(engines)
-        
+
         if categories:
             params['categories'] = ','.join(categories)
-        
+
         response = requests.get(f"{self.base_url}/search", params=params)
         return response.json()
-    
+
     def get_engines(self):
         """获取可用引擎列表"""
         response = requests.get(f"{self.base_url}/engines")
@@ -273,14 +274,14 @@ print(f"\n找到 {len(news_results['results'])} 条新闻")
 # 多引擎对比搜索
 def multi_engine_search(query, engine_list):
     client = SearXNGClient()
-    
+
     for engine in engine_list:
         print(f"\n{'='*50}")
         print(f"🔍 使用 {engine} 搜索: {query}")
         print('='*50)
-        
+
         results = client.search(query, engines=[engine])
-        
+
         for i, result in enumerate(results['results'][:3], 1):
             print(f"{i}. {result.get('title', '无标题')}")
             print(f"   {result.get('url', '无链接')}")
@@ -330,13 +331,13 @@ async def search(q: str, engines: Optional[str] = None):
             'language': 'zh-CN',
             'pageno': 1
         }
-        
+
         if engines:
             params['engines'] = engines
-        
+
         response = requests.get(f"{SEARXNG_URL}/search", params=params, timeout=10)
         data = response.json()
-        
+
         # 转换为 Chatbox 期望的格式
         formatted_results = []
         for result in data.get('results', [])[:10]:
@@ -347,13 +348,13 @@ async def search(q: str, engines: Optional[str] = None):
                 "engine": result.get('engine', ''),
                 "score": result.get('score', 0)
             })
-        
+
         return {
             "query": data.get('query', q),
             "number_of_results": data.get('number_of_results', len(formatted_results)),
             "results": formatted_results
         }
-    
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -372,12 +373,14 @@ if __name__ == "__main__":
 ```
 
 运行：
+
 ```bash
 pip install fastapi uvicorn requests
 python chatbox_proxy.py
 ```
 
 在 Chatbox 中配置：
+
 - 搜索 API 地址：`http://localhost:8000/search`
 - 参数格式：`?q={query}`
 
@@ -432,7 +435,7 @@ import requests
 class SearXNGSearchTool:
     def __init__(self, base_url: str = "http://localhost:8080"):
         self.base_url = base_url
-    
+
     def search(self, query: str, num_results: int = 5) -> str:
         """
         搜索并返回格式化结果
@@ -444,16 +447,16 @@ class SearXNGSearchTool:
                 'language': 'zh-CN',
                 'pageno': 1
             }
-            
+
             response = requests.get(
                 f"{self.base_url}/search",
                 params=params,
                 timeout=10
             )
-            
+
             data = response.json()
             results = data.get('results', [])[:num_results]
-            
+
             formatted = []
             for r in results:
                 formatted.append(
@@ -462,9 +465,9 @@ class SearXNGSearchTool:
                     f"摘要: {r.get('content', '')}\n"
                     f"来源: {r.get('engine', '')}\n"
                 )
-            
+
             return "\n---\n".join(formatted)
-        
+
         except Exception as e:
             return f"搜索失败: {str(e)}"
 
@@ -488,27 +491,27 @@ engines:
     engine: baidu
     shortcut: bd
     disabled: false
-    
+
   - name: 必应
     engine: bing
     shortcut: bi
     disabled: false
-    
+
   - name: 搜狗
     engine: sogou
     shortcut: sg
     disabled: false
-    
+
   # ⚠️ 可能需要代理
   - name: 谷歌
     engine: google
     shortcut: gg
-    disabled: true  # 国内建议关闭
-  
+    disabled: true # 国内建议关闭
+
   - name: DuckDuckGo
     engine: duckduckgo
     shortcut: ddg
-    disabled: true  # 国内建议关闭
+    disabled: true # 国内建议关闭
 ```
 
 ### 2. 使用反向代理
@@ -518,7 +521,7 @@ engines:
 server {
     listen 80;
     server_name searxng.yourdomain.com;
-    
+
     location / {
         proxy_pass http://localhost:8080;
         proxy_set_header Host $host;
@@ -526,7 +529,7 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
     }
-    
+
     # 启用 HTTPS（推荐）
     listen 443 ssl;
     ssl_certificate /path/to/cert.pem;
@@ -540,10 +543,10 @@ server {
 # settings.yml
 outgoing:
   # 使用代理（如果需要访问国外引擎）
-  proxy_url: "http://127.0.0.1:7890"  # 你的代理地址
+  proxy_url: "http://127.0.0.1:7890" # 你的代理地址
   # 或者使用 Tor
   # using_tor_proxy: true
-  
+
   # 自定义 User-Agent
   useragent_suffix: "SearXNG/1.0"
 ```
@@ -553,8 +556,9 @@ outgoing:
 ## ✅ 优缺点对比
 
 ### 优点
-| 特性             | 说明                       |
-| ---------------- | -------------------------- |
+
+| 特性              | 说明                       |
+| ----------------- | -------------------------- |
 | 💰 **完全免费**   | 无需 API Key，无调用限制   |
 | 🔒 **隐私保护**   | 不记录搜索历史，不追踪用户 |
 | 🎛️ **高度可定制** | 可配置引擎、主题、插件     |
@@ -564,8 +568,9 @@ outgoing:
 | 🌍 **开源**       | GitHub 开源，社区活跃      |
 
 ### 缺点
-| 问题                 | 说明               |
-| -------------------- | ------------------ |
+
+| 问题                  | 说明               |
+| --------------------- | ------------------ |
 | 🐢 **速度较慢**       | 需等待多个引擎响应 |
 | 🚫 **部分引擎不可用** | 国内网络限制       |
 | 💻 **需自建**         | 需要服务器资源     |
@@ -583,11 +588,11 @@ outgoing:
 search:
   # 启用结果缓存
   cache_url: "redis://localhost:6379/0"
-  
+
 server:
   # 启用压缩
   gzip: true
-  
+
 outgoing:
   # 调整超时
   request_timeout: 3.0
@@ -655,6 +660,7 @@ docker restart searxng
 ## 🎯 总结
 
 **SearXNG 适合你，如果：**
+
 - ✅ 想要完全免费的搜索方案
 - ✅ 注重隐私保护
 - ✅ 有服务器资源可以自建
@@ -662,6 +668,7 @@ docker restart searxng
 - ✅ 想要与 AI 应用深度集成
 
 **不适合，如果：**
+
 - ❌ 需要开箱即用的服务
 - ❌ 对搜索速度要求极高
 - ❌ 没有运维能力

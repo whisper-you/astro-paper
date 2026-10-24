@@ -1,5 +1,5 @@
 /* Import artistic Chinese font for site title */
-@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap");
 
 @import "tailwindcss";
 @import "./theme.css";
@@ -10,7 +10,8 @@
 
 /* 网站标题：使用站酷快乐体艺术字体，中文回退到宋体 */
 :root {
-  --font-site-title: 'ZCOOL KuaiLe', 'STSong', 'SimSun', 'Microsoft YaHei', sans-serif;
+  --font-site-title:
+    "ZCOOL KuaiLe", "STSong", "SimSun", "Microsoft YaHei", sans-serif;
 }
 
 @layer base {
